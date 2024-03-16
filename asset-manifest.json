@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/github.com/react-pro-3/static/css/main.f855e6bc.css",
+    "main.js": "/github.com/react-pro-3/static/js/main.b2c21167.js",
+    "index.html": "/github.com/react-pro-3/index.html",
+    "main.f855e6bc.css.map": "/github.com/react-pro-3/static/css/main.f855e6bc.css.map",
+    "main.b2c21167.js.map": "/github.com/react-pro-3/static/js/main.b2c21167.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.b2c21167.js"
+  ]
+}

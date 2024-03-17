@@ -1,0 +1,14 @@
+/* Custom styles */
+    .hero-banner {
+      /* background-image: url('../components/images/air-vapor.png'); */
+      alt: 'fs';
+      background-size: cover;
+      color: rgb(180, 13, 13);
+      text-align: top;
+      padding: 80px 0; /* Adjust as needed */
+      /* border: 1px solid black; */
+      margin-bottom: 10px;
+    }
+    .nav-link {
+      color: rgb(148, 9, 9) !important;
+    }

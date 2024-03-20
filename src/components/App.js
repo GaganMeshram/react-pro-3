@@ -4,6 +4,9 @@ import Demo from "./Demo";
 import Header from "./Header";
 import Hero from "./Hero";
 import { useEffect, useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import NotFound from "./NotFound";
+import ContactCard from "./ContactCard";
 
 function App() {
   const Local_Data = "contacts"; // Use a constant variable for the local storage key
@@ -27,13 +30,35 @@ function App() {
     // Implement delete functionality here
   };
 
+  // Rouetrs
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <ContactList contacts={contacts} />,
+      errorElement: <NotFound />,
+      children: [
+        {
+          path: "/contact/:profileId",
+          element: <ContactCard contacts={contacts} deleteContact={deleteContact}/>,
+        }
+      ],
+    },
+    {
+      path: "/add",
+      element: <AddContact getContact={getContact} />,
+    },
+  ]);
+
   return (
     <div className="App">
       <Header />
       <Hero />
+      <RouterProvider router={router} />
+
       {/* <Demo/> */}
-      <AddContact getContact={getContact} />
-      <ContactList contacts={contacts} deleteContact={deleteContact} />
+      {/* <AddContact getContact={getContact} />
+      <ContactList contacts={contacts} deleteContact={deleteContact} /> */}
     </div>
   );
 }

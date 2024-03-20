@@ -16,6 +16,9 @@ const AddContact = ({ getContact }) => {
         name: name,
         email: email,
       });
+    setName('')
+    setEmail('')
+    
   };
 
   useEffect(() => {
@@ -39,6 +42,7 @@ const AddContact = ({ getContact }) => {
                   className="form-control"
                   id="name"
                   placeholder="Enter your name"
+                  value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
@@ -49,6 +53,7 @@ const AddContact = ({ getContact }) => {
                   class="form-control"
                   id="email"
                   placeholder="Enter your email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>

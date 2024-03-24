@@ -1,9 +1,10 @@
 import ContactCard from "./ContactCard";
 import { NavLink, Outlet } from "react-router-dom";
+import Search from "./Search";
 
 const ContactList = ({ contacts, deleteContact }) => {
   const getContact = contacts.map((contact) => (
-    <div>
+    <div className="">
       <div className="">
         <ul className="list-unstyled">
           <li key={contact}>
@@ -14,7 +15,7 @@ const ContactList = ({ contacts, deleteContact }) => {
               key={contact}
               to={`/contact/${contact.id}`}
             >
-              <h6>{contact.name}</h6>
+              <h6 className=" text-black">{contact.name}</h6>
               {/* <i>{contact.email}</i> */}
             </NavLink>
           </li>
@@ -25,33 +26,22 @@ const ContactList = ({ contacts, deleteContact }) => {
 
   return (
     <div className="container">
+      <NavLink className="btn btn-dark" to={"/add"}>
+        Add new
+      </NavLink>
       <div className="row">
         <div className="col-sm-4">
-          <h3>Contact list</h3>
           {contacts.length === 0 ? (
-          <div>No Contacts</div>
-        ) : (
-          <div className="flex gap-2">{getContact}</div>
-        )}
+            <div>No Contacts</div>
+          ) : (
+            <div className="flex gap-2">{getContact}</div>
+          )}
         </div>
         <div className="col-sm-8">
-          <Outlet/>
+          <Outlet />
         </div>
       </div>
     </div>
-
-    // <div className="container">
-    //   <div className="flex flex-column gap-2">
-    //     <h2 className="display-3">Contact List</h2>
-    //     {contacts.length === 0 ? (
-    //       <div>No Contacts</div>
-    //     ) : (
-    //       <div className="flex gap-2">{getContact}</div>
-    //     )}
-    //   </div>
-
-    //   <Outlet />
-    // </div>
   );
 };
 

@@ -1,10 +1,11 @@
 import AddContact from "./AddConatact";
 import ContactList from "./ContactList";
+import NoUser from "./NoUser";
 import Demo from "./Demo";
 import Header from "./Header";
 import Hero from "./Hero";
 import { useEffect, useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Route, RouterProvider } from "react-router-dom";
 import NotFound from "./NotFound";
 import ContactCard from "./ContactCard";
 
@@ -24,14 +25,13 @@ function App() {
     setContacts([...contacts, user]);
   };
 
-  const deleteContact = (user) => {
-    console.log(user.id);
-    setContacts(contacts.filter((contact) => contact.id != user.id));
+  const deleteContact = (id) => {
+    // console.log(id);
+    setContacts(contacts.filter((contact) => contact.id != id));
     // Implement delete functionality here
   };
 
   // Rouetrs
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -39,26 +39,30 @@ function App() {
       errorElement: <NotFound />,
       children: [
         {
-          path: "/contact/:profileId",
-          element: <ContactCard contacts={contacts} deleteContact={deleteContact}/>,
-        }
+          path: "/contact/:id",
+          element: (
+            <ContactCard contacts={contacts} deleteContact={deleteContact} />
+          ),
+        },
+        {
+          path: "/add",
+          element: <AddContact getContact={getContact} />,
+        },
       ],
     },
+    ,
+    ,
     {
-      path: "/add",
-      element: <AddContact getContact={getContact} />,
+      path: "*",
+      element: <NotFound />,
     },
   ]);
 
   return (
     <div className="App">
-      <Header />
-      <Hero />
-      <RouterProvider router={router} />
-
-      {/* <Demo/> */}
-      {/* <AddContact getContact={getContact} />
-      <ContactList contacts={contacts} deleteContact={deleteContact} /> */}
+      // <Header />
+      // <Hero />
+      // <RouterProvider router={router} />
     </div>
   );
 }

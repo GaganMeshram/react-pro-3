@@ -1,6 +1,7 @@
 import ContactCard from "./ContactCard";
 import { NavLink, Outlet } from "react-router-dom";
 import Search from "./Search";
+import "../css/contactList.css";
 
 const ContactList = ({ contacts, deleteContact }) => {
   const getContact = contacts.map((contact) => (
@@ -10,13 +11,12 @@ const ContactList = ({ contacts, deleteContact }) => {
           <li key={contact}>
             <NavLink
               className={({ isActive }) => {
-                return isActive ? "text-success" : "";
+                return isActive ? "text-danger" : "";
               }}
               key={contact}
               to={`/contact/${contact.id}`}
             >
-              <h6 className=" text-black">{contact.name}</h6>
-              {/* <i>{contact.email}</i> */}
+              {contact.name}
             </NavLink>
           </li>
         </ul>
@@ -30,7 +30,7 @@ const ContactList = ({ contacts, deleteContact }) => {
         Add new
       </NavLink>
       <div className="row">
-        <div className="col-sm-4">
+        <div className=" contact-list col-sm-4 text-bg-light pt-2 mt-2 border-2 rounded-2">
           {contacts.length === 0 ? (
             <div>No Contacts</div>
           ) : (
